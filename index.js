@@ -9,7 +9,7 @@ dotenv.config()
 console.log(process.env.MONGO_URL);
 
 app.use(express.json())
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const MONGO_URL = process.env.MONGO_URL;
 
 export async function createConnection() {
@@ -21,7 +21,7 @@ export async function createConnection() {
 //   .collection("movies")
 //   .findOne({id : 1});
 //   console.log(movie)
-  return client;
+  return client ;
  }
 
 export const client = await createConnection();
