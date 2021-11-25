@@ -1,4 +1,4 @@
-import { getMovies, createMovie, getMovieById, deleteMovieById, updateByName } from "./helper.js";
+import { getMovies, createMovie, getMovieById, deleteMovieById, updateByName, updateById } from "./helper.js";
 import express from "express";
 
 
@@ -60,9 +60,10 @@ route("/:id")
 
 })
 .put(async (req,resp) => {
-  let param = +req.params.id;
-  await updatebyId(id, body);
-  const movie = await getMovieById(param);
+  let id = +req.params.id;
+  const body = req.body;
+  await updateById(id, body);
+  const movie = await getMovieById(id);
   resp.send(movie ? movie : { message: "no match" });
 });
 

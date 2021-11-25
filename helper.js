@@ -35,13 +35,14 @@ export async function createMovie(data) {
   const movie = await client
     .db("sample")
     .collection("movies")
-    .insertMany(data);
+    .insertOne(data);
   return movie;
 }
 
 export async function updateById(id, body) {
-  await client
+ const movie = await client
   .db("sample")
-  .collection("movie")
+  .collection("movies")
   .updateOne({id : id}, {$set : body})
+  return movie;
 }
