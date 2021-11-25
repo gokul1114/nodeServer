@@ -4,6 +4,8 @@ import express from "express";
 import { MongoClient } from "mongodb"
 import dotenv from "dotenv";
 import { movieRouter } from "./movie.js";
+import { userRouter } from "./user.js";
+
 import cors from "cors"
 
 export const app = express();
@@ -73,6 +75,7 @@ const movies = [
   ];
 
 app.use("/movies", movieRouter);
+app.use("/users", userRouter)
 //console.log(movies)
 app.get("/",(req, resp) => {
     resp.send('hello world')
