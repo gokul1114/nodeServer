@@ -38,3 +38,10 @@ export async function createMovie(data) {
     .insertMany(data);
   return movie;
 }
+
+export async function updateById(id, body) {
+  await client
+  .db("sample")
+  .collection("movie")
+  .updateOne({id : id}, {$set : body})
+}

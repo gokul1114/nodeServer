@@ -58,6 +58,12 @@ route("/:id")
   const movie = await deleteMovieById(param);
   resp.send(movie ? movie : { message: "no match" });
 
+})
+.put(async (req,resp) => {
+  let param = +req.params.id;
+  await updatebyId(id, body);
+  const movie = await getMovieById(param);
+  resp.send(movie ? movie : { message: "no match" });
 });
 
  
